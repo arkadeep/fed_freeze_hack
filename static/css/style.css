@@ -1,0 +1,10 @@
+#index_bg {
+    background-image: url(../assets/homepage_background.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}

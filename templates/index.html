@@ -7,18 +7,19 @@
         <title>Fed Freeze</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='css/bulma.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-
     </head>
 
     <body>
-        <div class="section">
-            <div class="container">
-                <form method="POST" action="{{ url_for('index') }}">
-                    <input type="hidden" name="zip" value="60615">
-                    <button type="submit" class="button is-primary is-large">
-                        Submit ZIP
-                    </button>
-                </form>
+        <div id="index_bg">
+            <div class="section">
+                <div class="container">
+                    <form method="POST" action="{{ url_for('index') }}">
+                        <input type="hidden" name="zip" value="60615">
+                        <button type="submit" class="button is-primary is-large">
+                            Submit ZIP
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </body>
