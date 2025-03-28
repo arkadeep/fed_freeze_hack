@@ -1,0 +1,54 @@
+curl -X POST https://api.usaspending.gov/api/v2/search/spending_by_award/ \
+  -H "Content-Type: application/json" \
+  -d '{
+      "subawards": false,
+      "limit": 1,
+      "page": 1,
+      "filters": {
+          "award_type_codes": ["A", "B", "C"],
+          "time_period": [{"start_date": "2018-10-01", "end_date": "2019-09-30"}]
+      },
+      "fields": [
+          "Award ID",
+          "Recipient Name",
+          "Start Date",
+          "End Date",
+          "Award Amount",
+          "Awarding Agency",
+          "Awarding Sub Agency",
+          "Contract Award Type",
+          "Award Type",
+          "Funding Agency",
+          "Funding Sub Agency"
+      ]
+  }'
+
+
+
+curl -X POST https://api.usaspending.gov/api/v2/search/spending_by_award/ \
+  -H "Content-Type: application/json" \
+  -d '{
+      "subawards": false,
+      "limit": 1,
+      "page": 1,
+      "filters": {
+            "award_type_codes": ["A", "B", "C"],
+            "award_ids": ["93310023P0021"]
+      },
+      "fields": [
+            "Description",
+            "Award ID",
+            "Recipient Name",
+            "Recipient DUNS Number",
+            "recipient_id",
+            "Start Date",
+            "End Date",
+            "Award Amount",
+            "Awarding Agency",
+            "Awarding Sub Agency",
+            "Contract Award Type",
+            "Award Type",
+            "Funding Agency",
+            "Funding Sub Agency"
+      ]
+  }'
