@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Fed Freeze</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bulma.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    </head>
+
+    <body>
+        <div id="form">This will be scrolly-telly</div>
+        <div>
+            Current temporary follows:
+        </div>
+        <div id="content">
+        </div>
+    </body>
+
+</html>
+
+<script>
+    async function fetchData() {
+        try {
+            const response = await fetch(`/response`, {
+                method: "GET",
+            });
+            const data = await response.json();
+            document.getElementById('content').innerHTML = `<code>${JSON.stringify(data.data, null, 2)}</code>`;
+            console.log('Received data:', data);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    }
+
+    // Call fetchData when the page loads
+    window.onload = fetchData;
+</script>
