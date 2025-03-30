@@ -61,7 +61,7 @@ class SpendingItem:
         return all_data
 
     def save_to_csv(self, items):
-        filename= "fed_freeze_hack/data/" + self.name + "_all.csv"
+        filename= "./data/" + self.name + "_all.csv"
         if not self.name:
             print("No data to save to CSV")
             return

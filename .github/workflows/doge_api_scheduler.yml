@@ -26,7 +26,7 @@ jobs:
           pip install requests
       
       - name: Run Doge API script
-        run: python fed_freeze_hack/scripts/doge_api_script.py
+        run: python ./scripts/doge_api_script.py
       
       - name: Commit and push if data changed
         run: |
