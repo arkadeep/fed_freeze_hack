@@ -1,27 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Fed Freeze</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/bulma.css') }}">
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    </head>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fed Freeze</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bulma.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
 
-    <body>
-        <div id="index_bg">
-            <div class="section">
-                <div class="container">
-                    <form method="POST" action="{{ url_for('index') }}">
-                        <input type="hidden" name="zip" value="60615">
-                        <button type="submit" class="button is-primary is-large">
-                            Submit ZIP
-                        </button>
-                    </form>
-                </div>
+  <body>
+    <div class="hero is-fullheight" id="index-bg">
+
+      <div class="hero-head">
+        <nav class="navbar">
+          <div class="container">
+            <div class="navbar-brand">
+              <a class="navbar-item" href="../">
+                Fed Freeze
+              </a>
             </div>
+            <div id="navbarMenu" class="navbar-menu">
+              <div class="navbar-end">
+                <span class="navbar-item">
+                  <a class="button is-dark is-outlined" href="#">
+                    <span class="icon">
+                      <i class="fa fa-home"></i>
+                    </span>
+                    <span>About</span>
+                  </a>
+                </span>
+                <span class="navbar-item">
+                  <a class="button is-dark is-outlined" href="#">
+                    <span class="icon">
+                      <i class="fa fa-book"></i>
+                    </span>
+                    <span>Documentation</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+
+
+      <div class="hero-body">
+        <div class="container has-text-centered">
+          <div class="box index-card column is-8 is-offset-2">
+            <h1 class="title">
+              DOGE says it has cancelled <span id="topic">________</span>
+            </h1><br>
+            <h2 class="subtitle">
+              How has DOGE affected your community?
+            </h2>
+            <form method="POST" action="{{ url_for('index') }}">
+              <div class="field has-addons has-addons-centered">
+                <div class="control">
+                  <input class="input" type="text" placeholder="ZIP Code">
+                </div>
+                <div class="control">
+                  <button type="submit" class="button is-dark">
+                    Submit
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
-    </body>
+      </div>
+    </div>
+  </body>
 
 </html>
