@@ -1,43 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fed Freeze</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/bulma.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Fed Freeze</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/bulma.css') }}">
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-
-    </head>
-
-    <body>
-        <div id="form">This will be scrolly-telly</div>
-        <div>
-            Current temporary follows:
-        </div>
-        <div id="content">
-        </div>
-    </body>
-
+  <body>
+    <div class="header">Header</div>
+    <div class="intro">
+Fed Freeze</h1>
+      <h2 class="subtitle">Local</h2>
+    </div>
+    <div class="scroller-container">
+      <div id="sticky"></div>
+      <div class="scroller" id="step1">
+       <p>This is the first "step".</p> 
+      </div>
+      <div class="scroller" id="step2">
+        <p>This is the second step. There is JS code that changes the color of the sticky box to red when the div is 50% of the way down the screen.</p>
+      </div>
+      <div class="scroller" id="step3">
+        <p>This is the third step. here is the data:</p>
+      </div>
+    </div>
+    <script src="{{ url_for('static', filename='noframework.waypoints.min.js') }}"></script>
+  </body>
 </html>
 
 <script>
-    async function fetchData() {
-        /*
+
+
+new Waypoint({
+    element: document.getElementById("step2"),
+    handler: function (direction) {
+      if (direction == "down") {
+        console.log("going down past step 2. Sticky box change to red");
+        sticky = document.querySelector("#sticky");
+        sticky.style.backgroundColor = "red";
+        
+      } else {
+        console.log("going up past step 2. Sticky box change to aqua");
+        sticky = document.querySelector("#sticky");
+        sticky.style.backgroundColor = "aqua";
+        
+      }
+    },
+    offset: "50%",
+  });
+
+
+
+  async function fetchData() {
+    /*
         FUnction to get data from the /response endpoint and then display 
         */
-        try {
-            const response = await fetch(`/response`, {
-                method: "GET",
-            });
-            const data = await response.json();
-            document.getElementById('content').innerHTML = `<code>${JSON.stringify(data.data, null, 2)}</code>`;
-            console.log('Received data:', data);
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
+    try {
+      const response = await fetch(`/response`, {
+        method: "GET",
+      });
+      const data = await response.json();
+      step3 = document.querySelector("#step3");
+      step3.innerHTML += `<code>${JSON.stringify(data.data)}</code>`;
+      console.log("Received data:", data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
     }
+  }
 
-    // Call fetchData when the page loads
-    window.onload = fetchData;
+  // Call fetchData when the page loads
+  window.onload = fetchData;
 </script>
